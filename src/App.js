@@ -1,23 +1,27 @@
-import logo from './logo.svg';
+import { Switch, Route } from 'react-router-dom';
+
+import Nav from './components/Nav';
+import Home from './pages/Home';
+import Starred from './pages/Starred';
+
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Welcome to learning React
-        </a>
-      </header>
+    <div>
+      <Nav />
+
+      <Switch>
+        <Route exact={true} path="/">
+          <Home />
+        </Route>
+
+        <Route exact={true} path="/starred">
+          <Starred />
+        </Route>
+
+        <Route>This is 404 Page</Route>
+      </Switch>
     </div>
   );
 }
